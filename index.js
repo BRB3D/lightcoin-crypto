@@ -3,7 +3,7 @@ class Account {
     this.username = username;
     this.history = [];
   }
-  get balance(){
+  get balance() {
     let balance = 0;
     for (let v of this.history) {
       balance += v.value;
@@ -11,13 +11,13 @@ class Account {
     return balance;
   }
 
-  addTransaction(transaction){
-    this.history.push(transaction)
+  addTransaction(transaction) {
+    this.history.push(transaction);
   }
 }
 
 class Transaction {
-  constructor (amount, account) {
+  constructor(amount, account) {
     this.amount = amount;
     this.account = account;
   }
@@ -37,12 +37,12 @@ class Deposit extends Transaction {
   possible() {
     return true;
   }
- }
+}
 
 
-class Withdrawal extends Transaction{
+class Withdrawal extends Transaction {
   get value() {
-   return - this.amount;
+    return - this.amount;
   }
   possible() {
     console.log(this.accountbalance - this.amount >= 0);
@@ -56,20 +56,20 @@ class Withdrawal extends Transaction{
 const myAccount = new Account("snow-patrol");
 /* console.log(`Starting Value: ${myAccount.balance}`); */
 
-t3 = new Deposit(120.00, myAccount);
+let t3 = new Deposit(120.00, myAccount);
 t3.commit();
 /* console.log('Transaction 3:', t3); */
 
 
-t1 = new Withdrawal(50.25, myAccount);
+let t1 = new Withdrawal(50.25, myAccount);
 t1.commit();
 /* console.log('Transaction 1:', t1); */
 
-t2 = new Withdrawal(9.99, myAccount);
+let t2 = new Withdrawal(9.99, myAccount);
 t2.commit();
 /* console.log('Transaction 2:', t2); */
 
-t4 = new Withdrawal(59.78, myAccount);
+let t4 = new Withdrawal(59.78, myAccount);
 t4.commit();
 
 console.log('Balance:', myAccount.balance);
